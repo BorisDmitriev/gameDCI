@@ -7,4 +7,4 @@ document.addEventListener('keydown', ({ key }) => {
             key.b.pressed = true;
             break;
     }
-});
+}); 
