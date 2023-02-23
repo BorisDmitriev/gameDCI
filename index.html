@@ -3,11 +3,83 @@
         margin: 0;
         padding: 0;
     }
+
+    #startWindow span:hover,
+    #restartWindow span:hover{
+        color: DeepSkyBlue;
+    }
 </style>
+
+
+<div id="startWindow" style="position:absolute; 
+            width: 500px; 
+            height: 200px; 
+            background-color: rgba(0, 255, 0, 0.302);
+            font-size: 50px;
+            color: white;
+            text-transform: uppercase;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+        ">
+            <span style="cursor:pointer;">Start</span>
+</div>
+
+<div id="restartWindow" style="
+            position:absolute; 
+            width: 500px; 
+            height: 200px; 
+            background-color: rgba(0, 255, 0, 0.302);
+            font-size: 50px;
+            color: white;
+            text-transform: uppercase;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+            row-gap: 15px;
+        ">
+            <span style="color:red; font-size:30px; letter-spacing: 30px;">Game Over</span>
+            <span style="cursor:pointer;">Restart</span>
+</div>
+
+<div style="
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        z-index: 20;
+        color: white;
+        font-size: 40px;
+    ">
+        Score: <span id="scoreIndicator">0</span>
+</div>
+
+<div style="
+        position: absolute;
+        top: 30px;
+        right: 300px;
+        z-index: 20;
+        color: yellow;
+        font-size: 40px;
+    ">
+        Difficulty: <span id="difficultyIndicatorWindow">0</span>
+</div>
+
+
 
 
 <canvas></canvas>
 
+
+<script src="./js/util.js"></script>
 <script src="./js/events.js"></script>
 <script src="./js/classes.js"></script>
 <script src="./js/index.js"></script>
