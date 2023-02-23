@@ -64,9 +64,9 @@ function run() {
     for (let i = stars.length - 1; i >= 0; i--) {
         const star = stars[i];
 
-        if (stars[i].position.x + stars[i].radius <= 0) {
-            stars[i].position.x = canvas.width + stars[i].radius;
-            stars[i].position.y = Math.random() * canvas.height;
+        if (star.position.x + star.radius <= 0) {
+            star.position.x = canvas.width + star.radius;
+            star.position.y = Math.random() * canvas.height;
         }
         star.move();
     }
@@ -95,12 +95,12 @@ function run() {
                 if( frequency !== minFrequency) {
                     frequency -= 30;
                     difficulty++;
-                    difficultyIndicator.innerHTML = difficulty;
+                    showDifficulty();
                 } 
             } 
-            console.log(score + " score"); 
-            console.log(frequency + " frequency"); 
-            console.log( difficulty + " difficulty");
+            // console.log(score + " score"); 
+            // console.log(frequency + " frequency"); 
+            // console.log( difficulty + " difficulty");
 
             enemies.push(new Enemy({
                 position: {
@@ -164,11 +164,11 @@ function run() {
                 if( frequency !== maxFrequency){
                     frequency += 30;
                     difficulty--;
-                    difficultyIndicator.innerHTML = difficulty;
+                    showDifficulty();
                 }
 
-                console.log( frequency + " collision");
-                console.log( difficulty + " difficulty in PowerUp Conditional");
+                // console.log( frequency + " collision");
+                // console.log( difficulty + " difficulty in PowerUp Conditional");
 
                 powerUps.splice(powerupIndex, 1);
             }

@@ -77,12 +77,13 @@ function gameOver() {
     restartWindow.style.display = 'flex';
 }
 
+
 function showScore(){
     scoreIndicator.innerHTML = score;
 }
 
-function showEnemyFrequency(){
-    
+function showDifficulty(){
+    difficultyIndicator.innerHTML = difficulty;
 }
 
 
