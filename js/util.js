@@ -21,10 +21,10 @@ function isCollision( {obj, typeEnemy} ){
     switch(typeEnemy){
         case 'enemy':
             return (
-                    obj.position.x - obj.height <= player.shield.position.x + player.shield.width
-                    && obj.position.x - obj.height >= player.shield.position.x
-                    && obj.position.y + obj.height / 2 >= player.shield.position.y
-                    && obj.position.y + obj.height / 2 <= player.shield.position.y + player.shield.height
+                obj.position.x - obj.height <= player.shield.position.x + player.shield.width
+                && obj.position.x - obj.height >= player.shield.position.x
+                && obj.position.y + obj.height / 2 >= player.shield.position.y
+                && obj.position.y + obj.height / 2 <= player.shield.position.y + player.shield.height
             );  
         case 'powerup':
             return (
@@ -48,15 +48,18 @@ function init() {
     enemies = [];
     powerUps = [];
     frames = 0;
-    difficulty = maxDifficulty;
-    difficultyIndicator = 0;
+    // score system re-initialisation
+    frequency = maxFrequency;
+    difficulty = 0;
+    isEqualScore = -1;
+
     game.start = true;
     game.colorIndex = 0;
     score = 0;
 
     startWindow.style.display = 'none';
     scoreIndicator.innerHTML = 0;
-    difficultyIndicatorWindow.innerHTML = 0;
+    difficultyIndicator.innerHTML = 0;
 }
 
 
@@ -76,6 +79,10 @@ function gameOver() {
 
 function showScore(){
     scoreIndicator.innerHTML = score;
+}
+
+function showEnemyFrequency(){
+    
 }
 
 

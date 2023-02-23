@@ -1,7 +1,8 @@
 <style>
-    body {
+    body,* {
         margin: 0;
         padding: 0;
+        user-select: none;
     }
 
     #startWindow span:hover,
@@ -26,7 +27,7 @@
             align-items: center;
             user-select: none;
         ">
-            <span style="cursor:pointer;">Start</span>
+            <span id="startButton" style="cursor:pointer;">Start</span>
 </div>
 
 <div id="restartWindow" style="
@@ -48,7 +49,7 @@
             row-gap: 15px;
         ">
             <span style="color:red; font-size:30px; letter-spacing: 30px;">Game Over</span>
-            <span style="cursor:pointer;">Restart</span>
+            <span id="restartButton" style="cursor:pointer;">Restart</span>
 </div>
 
 <div style="
@@ -70,7 +71,7 @@
         color: yellow;
         font-size: 40px;
     ">
-        Difficulty: <span id="difficultyIndicatorWindow">0</span>
+        Difficulty: <span id="difficultyIndicator">0</span>
 </div>
 
 

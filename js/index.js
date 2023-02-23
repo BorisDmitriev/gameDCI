@@ -1,9 +1,14 @@
+/**
+ * get Browser Objects
+ */ 
 const canvas = document.querySelector('canvas');
+
 const startWindow = document.querySelector('#startWindow');
 const restartWindow = document.querySelector('#restartWindow');
+const startButton = document.querySelector('#startButton');
+const restartButton = document.querySelector('#restartButton');
 const scoreIndicator = document.querySelector('#scoreIndicator');
-const difficultyIndicatorWindow = document.querySelector('#difficultyIndicatorWindow');
-
+const difficultyIndicator = document.querySelector('#difficultyIndicator');
 
 
 /**
@@ -36,10 +41,10 @@ let frames = 0;
 // score system
 let score = 0;
 let isEqualScore = -1;
-const maxDifficulty = 180;
-const minDifficulty = 90;
-let difficulty = maxDifficulty;
-let difficultyIndicator = 0;
+const maxFrequency = 180;
+const minFrequency = 90;
+let frequency = maxFrequency; 
+let difficulty = 0;
 
 /**
  * Logic
@@ -82,20 +87,20 @@ function run() {
 
 
         // generate enemies
-        if (frames % difficulty === 0) {
+        if (frames % frequency === 0) {
 
-            //check difficulty
+            //check frequency
             if(score > 0 && score%50 === 0 && score!==isEqualScore){
                 isEqualScore = score;
-                if( difficulty !== minDifficulty) {
-                    difficulty -= 30;
-                    difficultyIndicator++;
-                    difficultyIndicatorWindow.innerHTML = difficultyIndicator;
+                if( frequency !== minFrequency) {
+                    frequency -= 30;
+                    difficulty++;
+                    difficultyIndicator.innerHTML = difficulty;
                 } 
             } 
             console.log(score + " score"); 
-            console.log(difficulty + " difficulty"); 
-            console.log( difficultyIndicator + " enemyIndicator");
+            console.log(frequency + " frequency"); 
+            console.log( difficulty + " difficulty");
 
             enemies.push(new Enemy({
                 position: {
@@ -119,8 +124,9 @@ function run() {
 
                 //lose condition
                 game.colorIndex++;
-                if (game.colorIndex > 2)  gameOver();
+                if (game.colorIndex > 2) gameOver();
                 else player.shield.colorIndex = game.colorIndex;
+                
             }
             else {
                 enemy.move();
@@ -140,7 +146,7 @@ function run() {
         for (let powerupIndex = powerUps.length; powerupIndex >= 0; powerupIndex--) {
             const powerUp = powerUps[powerupIndex];
             
-            if( frames % 500 === 0 && difficultyIndicator !== 0) powerUps.push( new Powerup() );
+            if( frames % 500 === 0 && difficulty !== 0) powerUps.push( new Powerup() );
         }
 
         //rendering powerUps
@@ -155,14 +161,14 @@ function run() {
             //collision
             if ( isCollision({obj: powerUp, typeEnemy: 'powerup'}) ){
 
-                if( difficulty !== maxDifficulty){
-                    difficulty += 30;
-                    difficultyIndicator--;
-                    difficultyIndicatorWindow.innerHTML = difficultyIndicator;
+                if( frequency !== maxFrequency){
+                    frequency += 30;
+                    difficulty--;
+                    difficultyIndicator.innerHTML = difficulty;
                 }
 
-                console.log( difficulty + " collision");
-                console.log( difficultyIndicator + " powerupIndicator");
+                console.log( frequency + " collision");
+                console.log( difficulty + " difficulty in PowerUp Conditional");
 
                 powerUps.splice(powerupIndex, 1);
             }

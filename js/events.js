@@ -20,10 +20,10 @@ document.addEventListener('keyup', ({ key }) => {
     }
 }); 
 
-startWindow.addEventListener('click', event => {
+startButton.addEventListener('click', event => {
     init();
 }); 
 
-restartWindow.addEventListener('click', event => {
+restartButton.addEventListener('click', event => {
     restart();
 }); 
